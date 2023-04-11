@@ -1,8 +1,7 @@
 import React from "react"
-
 import { Link } from "react-router-dom"
 
-import "../SidePanel.css"
+import "../stylesheets/SidePanel.css"
 
 class SidePanel extends React.Component {
   render(){
