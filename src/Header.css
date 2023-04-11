@@ -1,0 +1,64 @@
+:root {
+    --primary-color: #5A6ACF;
+    --secondary-color: #ebeef8;
+    --tertiary-color: #A6ABC8;
+    --back-color: #FFFFFF;
+  }
+
+#Header {
+    grid-column-start: 2;
+    grid-column-end: span 2;
+    grid-row-start: 1;
+    grid-row-end: span 1;
+    display: flex;
+    align-items: center;
+    height: 3rem;
+    border-bottom: 1pt solid #C8CBD9;
+    padding: 1rem;
+  }
+
+#SearchCont {
+    flex: 1;
+    position: relative;
+}
+
+#SearchBox {
+    width: 100%;
+    flex: 1;
+    background: var(--secondary-color);
+    border-radius: 5px;
+    border: 1px solid var(--secondary-color);
+}
+
+#SearchBtn {
+    position: absolute;
+    right: 1%;
+    top:25%;
+}
+
+#ProfileCont {
+    display: flex;
+    width: 12rem;
+    margin-left: 40%;
+    justify-content: space-between;
+}
+
+#ProfileIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 50px;
+    border-radius: 50px;
+    background-color: #FFE6CC;
+}
+
+#BellIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 10px;
+    width: 35px;
+    background-color: var(--secondary-color);
+}

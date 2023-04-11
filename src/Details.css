@@ -1,0 +1,62 @@
+:root {
+    --primary-color: #5A6ACF;
+    --secondary-color: #ebeef8;
+    --tertiary-color: #A6ABC8;
+    --back-color: #FFFFFF;
+  }
+
+#DetailsCont {
+    justify-content: space-between;
+    height: 100%;
+    background-color: var(--secondary-color);
+    border: 1px solid #DFDFDF;
+    border-radius: 5px;
+    padding: 3rem;
+    display: flex;
+}
+
+
+#DetailsTable {
+    width: 100%;
+}
+
+#StatusCont {
+    width: 35%;
+    height: 100%;
+    background-color: var(--back-color);
+    border: 1px solid #DFDFDF;
+    border-radius: 5px;
+    padding: 2rem;
+    text-align: center;
+}
+
+#Charts {
+    display: flex;
+    margin: 0 20%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#UrgencyCircle {
+    height: 100px;
+    width: 100px;
+    background-color: #E6E6E6;
+    border: 1px solid #000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    font-size: 3rem;
+}
+
+#ProgCircle {
+    display: flex;
+    align-items: center;
+    height: 111px;
+    width: 111px;
+    padding-bottom: 10px;
+}
+.details-wrapper {
+    width: 50%;
+}

@@ -1,0 +1,40 @@
+:root {
+  --primary-color: #5A6ACF;
+  --secondary-color: #ebeef8;
+  --tertiary-color: #A6ABC8;
+  --back-color: #FFFFFF;
+}
+
+#DashBar {
+  display: flex;
+  align-items: center;
+}
+
+#DashHeader {
+  flex: 1;
+}
+
+#Reports {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #Reports td, #Reports th {
+    text-align: center;
+    border-bottom: 2px solid var(--secondary-color);
+    padding: 20px 0;
+  }
+  
+  /*#Reports tr:nth-child(even){background-color: #f2f2f2;}*/
+  
+  #Reports tr:nth-child(n+2):hover {
+    cursor: pointer;
+    background-color: var(--secondary-color);
+  }
+  
+  #Reports th {
+    font-weight: 500;
+    text-align: center;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }

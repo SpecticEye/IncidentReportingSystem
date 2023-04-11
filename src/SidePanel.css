@@ -1,0 +1,71 @@
+:root {
+    --primary-color: #5A6ACF;
+    --secondary-color: #ebeef8;
+    --tertiary-color: #A6ABC8;
+    --back-color: #FFFFFF;
+  }
+
+
+#SidePanel {
+    display: flex;
+    flex-direction: column;
+    grid-column-start: 1;
+    grid-column-start: span 1;
+    grid-row-start: 1;
+    grid-row-end: span 2;
+    height: 100%;
+    background-color: var(--secondary-color);
+  }
+
+#Title {
+    height: 5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    color: #5A6ACF;
+    border-bottom: 1pt solid  #C8CBD9;
+}
+
+#MenuCont {
+    flex: 1;
+    padding: 2rem 1rem;
+}
+
+#LogCont {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem;
+}
+
+.menu-header{
+    margin: 2rem 0 0 0.5rem;
+    font-weight: 400;
+    color: var(--tertiary-color);
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+    padding: 0.5rem;
+    border-radius: 4px;
+}
+
+li:hover {
+    background-color: #DFE2F8;
+}
+
+a {
+    color: var(--tertiary-color);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--primary-color);
+}
