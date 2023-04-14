@@ -7,7 +7,7 @@ function Dashboard() {
     <div>
         <div id="DashBar">
             <h1 id="DashHeader">Dashboard</h1>
-            <button className="primary-button">New Report</button>
+            <Link to={"/ReportIncident"}><button className="primary-button">New Report</button></Link>
         </div>
         <table id="Reports">
             <tr>

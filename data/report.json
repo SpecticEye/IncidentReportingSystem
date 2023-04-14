@@ -1,0 +1,37 @@
+{
+  "reports": [
+    {
+      "name": "Kanye West",
+      "user_id": "U0000000",
+      "title": "Defective faucet in M9 toilet",
+      "category": "Plumbing",
+      "buildingNr": "W10",
+      "roomNr": "W10-110",
+      "description": "Water goes BOOM",
+      "images": [],
+      "id": 1
+    },
+    {
+      "name": "Kanye West",
+      "user_id": "U0000000",
+      "title": "dsada",
+      "category": "Electrical",
+      "buildingNr": "vcxv",
+      "roomNr": "ngfnf",
+      "description": "vxcvxc",
+      "images": [],
+      "id": 2
+    },
+    {
+      "name": "Kanye West",
+      "user_id": "U0000000",
+      "title": "",
+      "category": "",
+      "buildingNr": "",
+      "roomNr": "",
+      "description": "",
+      "images": {},
+      "id": 3
+    }
+  ]
+}
