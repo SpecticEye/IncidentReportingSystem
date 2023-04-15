@@ -1,23 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
-
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 
-
 import "../../stylesheets/Details.css";
 
-function Details() {
-
-    const { state } = useLocation();
-
-    const [report, setReport ] = useState([])
-
-    useEffect(()=>{
-        fetch(`http://localhost:3001/reports/${state.ID}`)
-        .then(res => res.json())
-        .then(data => setReport(data))
-    },[])
+function DetailsDemo() {
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -26,7 +12,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
     datasets: [
         {
         label: '(%):',
-        data: [report.progress, Math.abs(100 - report.progress)],
+        data: [25,75],
         backgroundColor: [
             'rgba(255, 207, 114, 1)',
             'rgba(230, 230, 230, 1)',
@@ -41,22 +27,26 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
   return (
     <div>
-        <h1>{ report.title }</h1> 
-        <p id="ReportID">ID: { report.id }</p>
+        <h1>Defective electric door</h1> 
+        <p id="ReportID">ID: 292 007</p>
         <div id="DetailsCont">
             <div className="details-wrapper">
                 <table id="DetailsTable">
                     <tr>
                         <td><h2>Department:</h2></td>
-                        <td><p>{ report.category }</p></td>
+                        <td><p>Construction</p></td>
+                    </tr>
+                    <tr>
+                        <td><h2>Category:</h2></td>
+                        <td><p>Damaged Infrastructure</p></td>
                     </tr>
                     <tr>
                         <td><h2>Location:</h2></td>
-                        <td><p>{ report.buildingNr + ", Room " + report.roomNr} </p></td>
+                        <td><p>First Floor, Men’s College Building M1 </p></td>
                     </tr>
                     <tr>
                         <td><h2>Description:</h2></td>
-                        <td><p>{ report.description }</p></td>
+                        <td><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></td>
                     </tr>
                 </table>
                 <h2>Images:</h2>
@@ -65,18 +55,21 @@ ChartJS.register(ArcElement, Tooltip, Legend);
                 <h2>Status</h2>
                 <div id="Charts">
                     <div id="UrgencyCircle">
-                        <h3>{ report.urgency }</h3>
+                        <h3>4</h3>
                     </div>
                     <div id="ProgCircle">
                         <Pie data={data} />
                     </div>
                 </div>
                 <h2>Instructions</h2>
-                <p>{ report.instructions }</p>
+                <p>Lorem ipsum dolor sit amet, consecteturt labore et dolore magna aliqua.
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                Aliquip ex ea commodo consequat. Duis 
+                fugiat nulla pariatur. Excepteur sintllit anim id est laborum.</p>
             </div>
         </div>
     </div>
   );
 }
 
-export default Details;
+export default DetailsDemo;

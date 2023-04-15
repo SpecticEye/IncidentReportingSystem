@@ -1,30 +1,36 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import '../../stylesheets/Report-Form.css';
 
 const ReportIncident = () => {
+    const navigate = useNavigate();
+
     const [title, setTitle] = useState('');
     const [category, setCategory] = useState('');
     const [buildingNr, setBuildingNr] = useState('');
     const [roomNr, setRoomNr] = useState('');
     const [description, setDescription] = useState('');
     const [images, setImages] = useState(null);
-
+    const progress = 0;
+    const urgency = Math.floor(Math.random() * 10);
+    const instructions = "";
     const name = "Kanye West";
     const user_id = "U0000000";
     
     const handleSubmit = (e) => {
         e.preventDefault();
         const report = { name, user_id, title, category,
-             buildingNr, roomNr, description, images};
+             buildingNr, roomNr, description, progress, urgency, instructions, images};
     
-    fetch('http://localhost:8000/reports/', {
-        method: 'POST',
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(report)
-    }).then(() => {
-      console.log('new report added');
-    })
-      }
+        fetch('http://localhost:3001/reports/', {
+            method: 'POST',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(report)
+        }).then(() => {
+            navigate("/");
+        })
+    }
   
     return (
     <div className='report-form'>
