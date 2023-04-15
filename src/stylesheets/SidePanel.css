@@ -40,6 +40,25 @@
     margin: 1rem;
 }
 
+#LogBtn {
+    width: 100%;
+    font-size: 1rem;
+    color: #e04b10;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    border-radius: 4px;
+    padding: 0.5rem;
+}
+
+#LogBtn:hover {
+    background-color: #DFE2F8;
+}
+
+#LogIcon {
+    margin: auto 6px auto 0;
+}
+
 .menu-header{
     margin: 2rem 0 0 0.5rem;
     font-weight: 400;

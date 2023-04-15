@@ -1,6 +1,11 @@
 import React from "react"
 import { Link } from "react-router-dom"
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faDoorOpen } from '@fortawesome/free-solid-svg-icons'
+library.add(faDoorOpen);
+
 import "../stylesheets/SidePanel.css"
 
 class SidePanel extends React.Component {
@@ -20,7 +25,7 @@ class SidePanel extends React.Component {
             <Link to="/"><li>Help</li></Link>
             </ul>
         </div>
-        <div id="LogCont"><button>Log Out</button></div>
+        <div id="LogCont"><button id="LogBtn"><FontAwesomeIcon id="LogIcon" icon={faDoorOpen}/>Log Out</button></div>
       </div>
     )
   }
