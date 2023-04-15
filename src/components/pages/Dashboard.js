@@ -16,7 +16,7 @@ function Dashboard() {
                 <h1 id="DashHeader">Dashboard</h1>
                 {
                 (Mode.REQUESTOR == 0) && 
-                <button className="primary-button">New Report</button>
+                <Link to={"/ReportIncident"}><button className="primary-button">New Report</button></Link>
                 }
                 {
                 (Mode.MANAGER == 0) && (
@@ -74,7 +74,7 @@ function Dashboard() {
                 </tr>
             </table>
         </div>
-    );
+    )
 }
 
 export default Dashboard;
