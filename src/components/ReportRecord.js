@@ -2,12 +2,13 @@ import React from "react"
 
 import { useNavigate } from 'react-router-dom';
 
+import '../stylesheets/Dashboard.css';
 
-export default function ReportRecord({report, mode}){
-    const navigate = useNavigate()
+export default function ReportRecord({handler, report, mode}){
+    const navigate = useNavigate();
     
     return (
-        <tr>
+        <tr id = {report.id} className ="report-record" onClick={handler}>
             <td>{ report.id }</td>
             <td>{ report.title }</td>
             <td>{ report.buildingNr + ", " + report.roomNr }</td>

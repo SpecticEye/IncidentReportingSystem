@@ -41,6 +41,20 @@
       "instructions": "",
       "images": null,
       "id": 6
+    },
+    {
+      "name": "Kanye West",
+      "user_id": "U0000000",
+      "title": "Defective electric door",
+      "category": "Electrical",
+      "buildingNr": "M9",
+      "roomNr": "001",
+      "description": "Lorem ipsum dolor sit amet, consecteturt labore et dolore magna aliqua.\\\\n                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\\\\n                Aliquip ex ea commodo consequat. Duis \\\\n                fugiat nulla pariatur. Excepteur sintllit anim id est laborum.",
+      "progress": 0,
+      "urgency": 4,
+      "instructions": "",
+      "images": null,
+      "id": 7
     }
   ]
 }

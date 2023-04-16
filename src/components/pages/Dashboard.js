@@ -1,47 +1,79 @@
 import {useEffect, useState } from 'react'
 
 import { Link } from "react-router-dom";
+import { useLocation } from 'react-router-dom';
 import ReportRecord from '../ReportRecord';
 
 import '../../stylesheets/Dashboard.css';
 
 function Dashboard() {
 
-    const [reports, setReports ] = useState([])
+    const [isActiveRecord, setIsActiveRecord] = useState(false);
+    const [activeRecordElem, setActiveRecordElem] = useState(false);
+    var activeRecord = null;
 
-    useEffect(()=>{
-        fetch("http://localhost:3001/reports")
-        .then(res => res.json())
-        .then(data => setReports(data))
-    },[])
-    
-
-    
     const Mode = {
         REQUESTOR : 0,
         MANAGER : 1,
         MAINTENANCE : 2
     };
 
+    const { state } = useLocation();
+    const MODE =  (state) ? state.MODE : 0;
+
+    const [reports, setReports ] = useState([])
+
+    useEffect(()=>{
+        const link = (MODE == Mode.REQUESTOR) ? "http://localhost:3001/reports"
+                                : "http://localhost:3001/reports?category=Electrical"
+        fetch(link)
+        .then(res => res.json())
+        .then(data => setReports(data))
+    },[])
+
+    const handleRecord = (e) => {
+        e.preventDefault();
+        if (MODE != Mode.REQUESTOR)
+        {
+            activeRecord = e.target.parentElement.id;
+
+            //console.log("isActive? "+ isActiveRecord + " activeRecordElem? " + ( activeRecordElem !== null ), "comparison? " + ((activeRecordElem != null) ? (activeRecordElem.id != e.target.parentElement.id ): "no elem"));
+            //console.log(activeRecordElem);
+
+            if (isActiveRecord && activeRecordElem !== null && activeRecordElem.id != e.target.parentElement.id)
+            {
+                activeRecordElem.classList.toggle("record-toggle");
+            }
+            else 
+            {
+                setIsActiveRecord(!isActiveRecord);
+            }
+
+            e.target.parentElement.classList.toggle("record-toggle");
+            setActiveRecordElem(e.target.parentElement);
+
+        }
+    }
+
     return (
         <div>
             <div id="DashBar">
                 <h1 id="DashHeader">Dashboard</h1>
                 {
-                (Mode.REQUESTOR == 0) && 
+                (MODE == Mode.REQUESTOR) && 
                 <Link to={"/ReportIncident"}><button className="primary-button">New Report</button></Link>
                 }
                 {
-                (Mode.MANAGER == 0) && (
+                (MODE == Mode.MANAGER) && (
                     <div> 
-                        <button className="primary-button">Assign Report</button>
-                        <button className="primary-button">Edit Report</button>
-                        <button className="primary-button">Upload Instructions</button>
+                        <button disabled={!isActiveRecord} className="primary-button">Assign Report</button>
+                        <button disabled={!isActiveRecord} className="primary-button">Edit Report</button>
+                        <button disabled={!isActiveRecord} className="primary-button">Upload Instructions</button>
                     </div> )
                 }
                 {
-                (Mode.MAINTENANCE == 0) && 
-                <button className="primary-button">Edit Progress</button>
+                (MODE == Mode.MAINTENANCE) && 
+                <button disabled={!isActiveRecord} className="primary-button">Edit Progress</button>
                 }
                 
             </div>
@@ -55,9 +87,11 @@ function Dashboard() {
                     <th>Progress</th>
                     <th> </th>
                 </tr>
+                
                 { reports.map((report)=>(
-                    <ReportRecord report = {report} mode = {Mode}/>
+                    <ReportRecord className = "report-record" handler = {handleRecord} key = {report.id} report = {report} mode = {Mode}/>
                 ))}
+                
             </table>
         </div>
     )
