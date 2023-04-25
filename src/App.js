@@ -6,6 +6,9 @@ import Details from './components/pages/Details';
 import ReportIncident from './components/pages/ReportIncident';
 import DetailsDemo from "./components/pages/DetailsDemo";
 import Login from "./components/pages/Login";
+import EditStatus from "./components/pages/EditStatus";
+import InstructionsForm from "./components/pages/InstructionsForm";
+import AssignReport from "./components/pages/AssignReport";
 
 function App() {
   return (
@@ -18,6 +21,9 @@ function App() {
           <Route exact path="/Details/:id"element={<Details/>}/>
           <Route exact path="/DetailsDemo"element={<DetailsDemo/>}/>
           <Route exact path="/ReportIncident"element={<ReportIncident/>}/>
+          <Route exact path="/EditStatus"element={<EditStatus/>}/>
+          <Route exact path="/UploadInstructions"element={<InstructionsForm/>}/>
+          <Route exact path="/AssignReport"element={<AssignReport/>}/>
         </Routes>
       </Layout>
     </Router>

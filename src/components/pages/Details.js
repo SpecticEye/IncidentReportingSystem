@@ -19,7 +19,7 @@ function Details() {
         .then(data => setReport(data))
     },[])
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+    ChartJS.register(ArcElement, Tooltip, Legend);
 
     const data = {
     labels: [],

@@ -20,7 +20,7 @@ export default function Header() {
       <button id="SearchBtn"><FontAwesomeIcon id="SearchIcon" icon="search"/></button>
       </div>
       <div id="ProfileCont">
-          <div id="ProfileIcon"><h2>{(Mode == 0) ? "AL" : ((Mode == 1) ? "Mng" : "Mnt")}</h2></div>
+          <div id="ProfileIcon"><h2>{(Mode == 0) ? "AA" : ((Mode == 1) ? "Mng" : "Mnt")}</h2></div>
           <p>{(Mode == 0) ? "U19101900" : ((Mode == 1) ? "MngID" : "MntID")}</p>
           <div id="BellIcon"><FontAwesomeIcon icon="bell" /></div>
       </div>

@@ -15,7 +15,7 @@ const ReportIncident = () => {
     const progress = 0;
     const urgency = Math.floor(Math.random() * 10);
     const instructions = "";
-    const name = "Kanye West";
+    const name = "Ahmed Ali";
     const user_id = "U0000000";
     
     const handleSubmit = (e) => {
@@ -41,7 +41,7 @@ const ReportIncident = () => {
                 <input 
                 type="text" 
                 id="name" 
-                value="Kanye West" 
+                value="Ahmed Ali" 
                 className="form-field2" 
                 readOnly />
             </div>

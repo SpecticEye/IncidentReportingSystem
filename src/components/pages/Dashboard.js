@@ -1,16 +1,20 @@
 import {useEffect, useState } from 'react'
 
-import { Link } from "react-router-dom";
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import ReportRecord from '../ReportRecord';
+import AssignReport from './AssignReport';
+import EditStatus from './EditStatus';
+import InstructionsForm from './InstructionsForm';
+
 
 import '../../stylesheets/Dashboard.css';
+
 
 function Dashboard() {
 
     const [isActiveRecord, setIsActiveRecord] = useState(false);
     const [activeRecordElem, setActiveRecordElem] = useState(false);
-    var activeRecord = null;
+    const [activeRecord, setActiveRecord] = useState(false);
 
     const Mode = {
         REQUESTOR : 0,
@@ -25,7 +29,7 @@ function Dashboard() {
 
     useEffect(()=>{
         const link = (MODE == Mode.REQUESTOR) ? "http://localhost:3001/reports"
-                                : "http://localhost:3001/reports?category=Electrical"
+                                : "http://localhost:3001/reports?category=Plumbing"
         fetch(link)
         .then(res => res.json())
         .then(data => setReports(data))
@@ -35,8 +39,6 @@ function Dashboard() {
         e.preventDefault();
         if (MODE != Mode.REQUESTOR)
         {
-            activeRecord = e.target.parentElement.id;
-
             //console.log("isActive? "+ isActiveRecord + " activeRecordElem? " + ( activeRecordElem !== null ), "comparison? " + ((activeRecordElem != null) ? (activeRecordElem.id != e.target.parentElement.id ): "no elem"));
             //console.log(activeRecordElem);
 
@@ -48,17 +50,36 @@ function Dashboard() {
             {
                 setIsActiveRecord(!isActiveRecord);
             }
-
+            setActiveRecord(e.target.parentElement.id);
             e.target.parentElement.classList.toggle("record-toggle");
             setActiveRecordElem(e.target.parentElement);
 
         }
     }
 
+    function handleFormToggler(i) {
+        //console.log("called");
+        var elem;
+        switch(i) {
+            case 0: elem =  document.getElementById("assignReport");
+                break;
+            case 1: elem = document.getElementById("editStatus");
+                break;
+            case 2: elem = document.getElementById("uploadInstructions");
+                break;
+            default: elem = null;
+        }
+       if (elem != null)
+        elem.classList.toggle("s-report-form-toggler");
+
+        //console.log(elem);
+    }
+    
+
     return (
         <div>
             <div id="DashBar">
-                <h1 id="DashHeader">Dashboard</h1>
+                <h1 id="DashHeader">{(MODE == Mode.REQUESTOR) ? "Dashboard" : ((MODE == Mode.MANAGER) ? "Manager" : "Team 1")}</h1>
                 {
                 (MODE == Mode.REQUESTOR) && 
                 <Link to={"/ReportIncident"}><button className="primary-button">New Report</button></Link>
@@ -66,9 +87,9 @@ function Dashboard() {
                 {
                 (MODE == Mode.MANAGER) && (
                     <div> 
-                        <button disabled={!isActiveRecord} className="primary-button">Assign Report</button>
-                        <button disabled={!isActiveRecord} className="primary-button">Edit Report</button>
-                        <button disabled={!isActiveRecord} className="primary-button">Upload Instructions</button>
+                        <button disabled={!isActiveRecord} onClick={()=> handleFormToggler(0)} className="primary-button">Assign Report</button>
+                        <button disabled={!isActiveRecord} onClick={()=> handleFormToggler(1)} className="primary-button">Edit Report</button>
+                        <button disabled={!isActiveRecord} onClick={()=> handleFormToggler(2)} className="primary-button">Upload Instructions</button>
                     </div> )
                 }
                 {
@@ -93,6 +114,9 @@ function Dashboard() {
                 ))}
                 
             </table>
+            <AssignReport id = {activeRecord}/>
+            <EditStatus id = {activeRecord}/>
+            <InstructionsForm id = {activeRecord}/>
         </div>
     )
 }
