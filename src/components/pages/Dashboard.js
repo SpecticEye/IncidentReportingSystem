@@ -1,10 +1,10 @@
 import {useEffect, useState } from 'react'
 
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import ReportRecord from '../ReportRecord';
-import AssignReport from './AssignReport';
-import EditStatus from './EditStatus';
-import InstructionsForm from './InstructionsForm';
+import AssignReport from '../forms/AssignReport';
+import EditStatus from '../forms/EditStatus';
+import InstructionsForm from '../forms/InstructionsForm';
 
 
 import '../../stylesheets/Dashboard.css';
@@ -29,7 +29,10 @@ function Dashboard() {
 
     useEffect(()=>{
         const link = (MODE == Mode.REQUESTOR) ? "http://localhost:3001/reports"
-                                : "http://localhost:3001/reports?category=Plumbing"
+                                : (MODE == Mode.MANAGER) ? "http://localhost:3001/reports?category=Plumbing"
+                                : "http://localhost:3001/reports?category=Plumbing&team=1";
+                                console.log(link);
+                    
         fetch(link)
         .then(res => res.json())
         .then(data => setReports(data))
@@ -94,7 +97,7 @@ function Dashboard() {
                 }
                 {
                 (MODE == Mode.MAINTENANCE) && 
-                <button disabled={!isActiveRecord} className="primary-button">Edit Progress</button>
+                <button disabled={!isActiveRecord} onClick={()=> handleFormToggler(1)} className="primary-button">Edit Progress</button>
                 }
                 
             </div>
@@ -110,12 +113,12 @@ function Dashboard() {
                 </tr>
                 
                 { reports.map((report)=>(
-                    <ReportRecord className = "report-record" handler = {handleRecord} key = {report.id} report = {report} mode = {Mode}/>
+                    <ReportRecord className = "report-record" handler = {handleRecord} key = {report.id} report = {report} mode = {MODE}/>
                 ))}
                 
             </table>
             <AssignReport id = {activeRecord}/>
-            <EditStatus id = {activeRecord}/>
+            <EditStatus id = {activeRecord} mode = {MODE}/>
             <InstructionsForm id = {activeRecord}/>
         </div>
     )

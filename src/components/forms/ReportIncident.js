@@ -116,7 +116,7 @@ const ReportIncident = () => {
                 />
             </div>
             <div className='button-container'>
-                <button type="button" className="cancel-button">Cancel</button>
+                <button type="button" onClick={()=> navigate("/")} className="cancel-button">Cancel</button>
                 <button type="submit" className="submit-button">Submit</button>
             </div>
         </form>

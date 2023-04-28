@@ -16,36 +16,34 @@ function InstructionsForm({ id }){
         document.getElementById("uploadInstructions").classList.toggle("s-report-form-toggler");
     }
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
         console.log(id);
-        fetch(`http://localhost:3001/reports/${id}`)
-        .then(res => res.json())
-        .then(data => setReport(data))
-
-        console.log(report);
+        const response = await fetch(`http://localhost:3001/reports/${id}`)
+        const reportOld = await response.json();
+                
+        const name = reportOld.name;
+        const user_id = reportOld.user_id;
+        const title = reportOld.title;
+        const category = reportOld.category;
+        const buildingNr = reportOld.buildingNr;
+        const roomNr = reportOld.roomNr;
+        const description = reportOld.description;
+        const images = reportOld.images;
+        const urgency = reportOld.urgency;
+        const progress = reportOld.progress;
         
-        const name = report.name;
-        const user_id = report.user_id;
-        const title = report.title;
-        const category = report.category;
-        const buildingNr = report.buildingNr;
-        const roomNr = report.roomNr;
-        const description = report.description;
-        const urgency = report.urgency;
-        const progress = report.progress;
-        const images = report.images;
-
-        setReport({name, user_id, title, category, buildingNr, roomNr, description, progress, urgency, instructions, images});
-
+        const reportNew = {id, name, user_id, title, category, buildingNr, roomNr, description, progress, urgency, instructions, images}
+        
         fetch(`http://localhost:3001/reports/${id}`, {
             method: 'PUT',
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(report)
+            body: JSON.stringify(reportNew)
         }).then(response => response.json())
         .then(json => console.log(JSON.stringify(json)))
         
         toggleOff();
+        window.location.reload(false);
     }
     
    

@@ -15,6 +15,7 @@
       "id": 5
     },
     {
+      "id": 6,
       "name": "Ahmed Ali",
       "user_id": "U0000000",
       "title": "Defective faucet in M9 toilet",
@@ -22,11 +23,10 @@
       "buildingNr": "M3",
       "roomNr": "208",
       "description": "Lorem ipsum dolor sit amet, consecteturt labore et dolore magna aliqua.\n                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                Aliquip ex ea commodo consequat. Duis \n                fugiat nulla pariatur. Excepteur sintllit anim id est laborum.",
-      "progress": 25,
-      "urgency": 5,
-      "instructions": "",
-      "images": null,
-      "id": 6
+      "progress": 35,
+      "urgency": 4,
+      "instructions": "new instructions",
+      "images": null
     },
     {
       "name": "Ahmed Ali",

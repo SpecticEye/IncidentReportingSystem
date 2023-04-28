@@ -11,7 +11,8 @@ import "../stylesheets/Header.css"
 export default function Header() {
 
   const { state } = useLocation();
-  const Mode = (state != null) ? state.MODE : 0;
+  const Mode = (state != null && state.MODE != null) ? state.MODE : 0;
+  console.log(state);
 
   return (
     <div id="Header">

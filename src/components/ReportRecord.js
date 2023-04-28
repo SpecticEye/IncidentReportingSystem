@@ -15,10 +15,7 @@ export default function ReportRecord({handler, report, mode}){
             <td>{ report.category }</td>
             <td>{ report.urgency }</td>
             <td>{ report.progress + "%" }</td>
-            <td><button onClick={()=> navigate(`/Details/${report.id}` ,{state: {ID: report.id}})} className="secondary-button">View Report</button></td>
-            { (mode.MANAGER == 0 || mode.MAINTENANCE == 0) &&
-                        <td><button className="secondary-button">D</button></td>
-            }
+            <td><button onClick={()=> navigate(`/Details/${report.id}` ,{state: {ID: report.id, MODE: mode}})} className="secondary-button">View Report</button></td>
         </tr>
     )
 }
