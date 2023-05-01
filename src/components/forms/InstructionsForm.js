@@ -1,16 +1,9 @@
-import { useLocation } from 'react-router-dom'
 import '../../stylesheets/Report-Form.css'
-import getReport from '../../utility/getReport';
 import { useState } from 'react';
 
 function InstructionsForm({ id }){
 
     const [instructions, setInstructions] = useState();
-    const [report, setReport] = useState([]);
-
-
-    //const { state } = useLocation();
-    //console.log(id);
 
     const toggleOff = () => {
         document.getElementById("uploadInstructions").classList.toggle("s-report-form-toggler");

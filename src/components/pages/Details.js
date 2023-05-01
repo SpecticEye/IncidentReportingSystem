@@ -75,6 +75,9 @@ function Details() {
                 <p>{ report.instructions }</p>
             </div>
         </div>
+        { (state.MODE == 0) &&
+                <div className='rate-service-cont'><button type="submit" className="rate-service-button" disabled={!(report.progress == 100)}  >Rate Service</button></div>
+            }
     </div>
   );
 }

@@ -10,6 +10,7 @@ export default function AssignReport({id}) {
 
 
   const options1 = [
+    { value: 'Construction', label: 'Construction' },
     { value: 'Electrical', label: 'Electrical' },
     { value: 'Plumbing', label: 'Plumbing' },
     { value: 'IT', label: 'IT' },
@@ -17,6 +18,7 @@ export default function AssignReport({id}) {
   ];
   
   const options2 = [
+      { value: '0', label: 'None' },
       { value: '1', label: 'Team1' },
       { value: '2', label: 'Team2' },
       { value: '3', label: 'Team3' }

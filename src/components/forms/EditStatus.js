@@ -27,18 +27,18 @@ function EditStatus({ id , mode}){
         const images = reportOld.images;
         const urgency = (mode == 1) ? parseInt(urg) : reportOld.urgency;
         const progress = parseInt(prog);
+        const team = (reportOld.team) ? reportOld.team : "None";
         
-        const reportNew = {id, name, user_id, title, category, buildingNr, roomNr, description, progress, urgency, instructions, images}
+        const reportNew = {id, name, user_id, title, category, buildingNr, roomNr, description, progress, urgency, instructions, images, team}
         
         fetch(`http://localhost:3001/reports/${id}`, {
             method: 'PUT',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(reportNew)
         }).then(response => response.json())
-        .then(json => console.log(JSON.stringify(json)))
+        .then(() => window.location.reload(false))
         
         toggleOff();
-        window.location.reload(false);
     }
    
     return(

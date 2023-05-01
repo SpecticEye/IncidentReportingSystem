@@ -104,7 +104,7 @@ function Dashboard() {
             <table id="Reports">
                 <tr>
                     <th>ID</th>
-                    <th>Title</th>
+                    <th>Subject</th>
                     <th>Location</th>
                     <th>Department</th>
                     <th>Urgency</th>
